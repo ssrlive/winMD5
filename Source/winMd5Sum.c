@@ -41,7 +41,7 @@ BOOL CALLBACK MainDialogFunc(HWND hwndDlg,UINT uMsg,WPARAM wParam,LPARAM lParam)
 		case WM_DROPFILES:
 			{
 				TCHAR filename[MAX_PATH]=_T("");
-				HANDLE hDrop = (HANDLE) wParam;
+				HDROP hDrop = (HDROP) wParam;
 				DragQueryFile(hDrop,0,filename,MAX_PATH); // get the file name
 				DragFinish(hDrop);                      // close the handle
 				SetDlgItemText(hwndDlg,IDC_FILENAME,filename);

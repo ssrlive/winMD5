@@ -1,21 +1,17 @@
-Microsoft Visual Studio Solution File, Format Version 7.00
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "winMd5Sum", "winMd5Sum.vcproj", "{4C2BCA00-AE5D-4277-AE09-B5100A135FD8}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "winMd5Sum", "winMd5Sum.vcxproj", "{FF1ABE19-EDD3-92B1-0D84-2DCB8685D969}"
 EndProject
 Global
-	GlobalSection(SolutionConfiguration) = preSolution
-		ConfigName.0 = Debug
-		ConfigName.1 = Release
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
 	EndGlobalSection
-	GlobalSection(ProjectDependencies) = postSolution
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF1ABE19-EDD3-92B1-0D84-2DCB8685D969}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FF1ABE19-EDD3-92B1-0D84-2DCB8685D969}.Release|Win32.ActiveCfg = Release|Win32
 	EndGlobalSection
-	GlobalSection(ProjectConfiguration) = postSolution
-		{4C2BCA00-AE5D-4277-AE09-B5100A135FD8}.Debug.ActiveCfg = Debug|Win32
-		{4C2BCA00-AE5D-4277-AE09-B5100A135FD8}.Debug.Build.0 = Debug|Win32
-		{4C2BCA00-AE5D-4277-AE09-B5100A135FD8}.Release.ActiveCfg = Release|Win32
-		{4C2BCA00-AE5D-4277-AE09-B5100A135FD8}.Release.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-	EndGlobalSection
-	GlobalSection(ExtensibilityAddIns) = postSolution
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

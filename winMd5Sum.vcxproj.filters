@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{e418960c-22bc-4931-96c5-55820a5c1f0b}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{19aadb9f-c1ee-456f-baad-1c2df03cd180}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{71799c7f-3a2d-4296-8b7a-fb2dfd488b61}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="Install Files">
+      <UniqueIdentifier>{ab66c1d5-3182-4f30-9572-e4ac15756813}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\md5.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\winMd5Sum.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Source\winMd5Sum.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="Source\version.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\md5.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source\ICON1.ICO">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Source\empty.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Source\sb-logo.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Source\solid.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Install\license.txt">
+      <Filter>Install Files</Filter>
+    </None>
+    <None Include="Install\version.nsi">
+      <Filter>Install Files</Filter>
+    </None>
+    <None Include="Install\winMd5Sum.nsi">
+      <Filter>Install Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="Source\winMd5Sum.manifest">
+      <Filter>Resource Files</Filter>
+    </Manifest>
+  </ItemGroup>
+</Project>

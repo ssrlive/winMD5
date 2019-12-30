@@ -1,0 +1,15 @@
+*.aps
+*.sdf
+*.opensdf
+*.old
+*.suo
+*.vcxproj.user
+Debug/
+Release/
+x64/
+
+UpgradeLog.XML
+_UpgradeReport_Files/
+ipch/
+
+
