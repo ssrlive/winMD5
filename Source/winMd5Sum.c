@@ -15,6 +15,46 @@ HINSTANCE gInstance=0;
 const TCHAR good_msg[]=_T("MD5 Check Sums are the same.");
 const TCHAR bad_msg[] =_T("MD5 Check Sums are different.");
 
+
+void calc_md5(LPCTSTR filename, volatile BOOL *stop, TCHAR hex[33]) {
+    int i,len;
+    md5_byte_t buffer[512] = { 0 };
+    md5_state_t state;
+    md5_byte_t digest[16] = { 0 };
+    FILE *pfile;
+
+    if(lstrlen(filename) && (pfile=_tfopen(filename,_T("rb")))) {
+        BOOL success = TRUE;
+        md5_init(&state);
+
+        do {
+            if (stop && *stop) {
+                success = FALSE;
+                break;
+            }
+            len = fread(buffer, 1, sizeof(buffer), pfile);
+            if (ferror(pfile)) {
+                success = FALSE;
+                break;
+            }
+            md5_append(&state, (const md5_byte_t *)buffer, len);
+        } while(!feof(pfile));
+
+        md5_finish(&state, digest);
+
+        hex[0]=0;
+
+        if (success) {
+            for(i=0; i<16; i++) {
+                _stprintf(hex, _T("%s%02x"), hex, digest[i]);
+            }
+        }
+
+        fclose(pfile);
+    }
+}
+
+
 BOOL CALLBACK MainDialogFunc(HWND hwndDlg,UINT uMsg,WPARAM wParam,LPARAM lParam)
 {
     switch(uMsg) {
@@ -106,42 +146,16 @@ BOOL CALLBACK MainDialogFunc(HWND hwndDlg,UINT uMsg,WPARAM wParam,LPARAM lParam)
 
         case ID_CALCULATE:
             {
-                int i,len;
-                md5_byte_t buffer[512];
                 TCHAR hex[33]=_T("");
                 TCHAR filename[MAX_PATH]=_T("");
-                md5_state_t state;
-                md5_byte_t digest[16];
-                FILE *pfile;
-
-                GetDlgItemText(hwndDlg,IDC_FILENAME,filename,MAX_PATH);
-
-                if(lstrlen(filename)&&(pfile=_tfopen(filename,_T("rb")))) {
-
-                    md5_init(&state);
-
-                    do {
-                        len=fread(buffer,1,512,pfile);
-                        if(!ferror(pfile)) md5_append(&state,(const md5_byte_t *)buffer,len);
-                        Sleep(0);
-                    } while(!feof(pfile));
-
-                    md5_finish(&state, digest);
-
-                    hex[0]=0;
-                    for(i=0;i<16;i++) _stprintf(hex,_T("%s%02x"),hex,digest[i]);
-
-                    fclose(pfile);
-
-                    SetDlgItemText(hwndDlg,IDC_MD5SUM,hex);
-                } else {
-                    SetDlgItemText(hwndDlg,IDC_MD5SUM,_T("Invalid File"));
-                }
+                GetDlgItemText(hwndDlg, IDC_FILENAME, filename, MAX_PATH);
+                calc_md5(filename, NULL, hex);
+                SetDlgItemText(hwndDlg,IDC_MD5SUM, hex[0] ? hex : _T("Invalid File"));
             }
             break;
 
         case IDC_ABOUT:
-            ShellExecute(0,_T("open"),_T("http://www.nullriver.com"),0,0,SW_SHOWNORMAL);
+            ShellExecute(0,_T("open"),_T("https://github.com/ssrlive/winMD5"),0,0,SW_SHOWNORMAL);
             break;
         }
     }
